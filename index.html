@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic Tac Toe</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.1.1/jscolor.min.js"></script>
+  </head>
+
+  <body>
+    <div class="column">
+      <br /><br />
+      <button class="player-score" id="player-x-score">0</button>
+      <br />
+      <h2>Player</h2>
+      <div class="player-avatar" id="player-x-avatar"><h1>O</h1></div>
+      <br />
+    </div>
+    <div class="container">
+      <h1>Tic Tac Toe</h1>
+      <br />
+      <div>
+        <span>
+          <label for="#board-size-input"> Number of Board</label>
+          <input
+            size="6"
+            type="text"
+            id="board-size-input"
+            placeholder="board:"
+          />
+        </span>
+
+        &nbsp
+
+        <button id="submit-button">Submit</button>
+      </div>
+      <br />
+      <div>
+        <p clas="continue-reset">
+          <button id="continue-btn">Continue</button>
+          <button id="draw-btn">Draw</button>
+          <button id="reset-btn">Reset</button>
+        </p>
+      </div>
+      <div><p class="alert"></p></div>
+      <br />
+      <div class="table-container" id="board">
+        <table class="table">
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="column">
+      <br /><br />
+      <button class="player-score" id="player-o-score">0</button>
+      <br />
+      <h2>Player</h2>
+      <div class="player-avatar" id="player-o-avatar"><h1>X</h1></div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
