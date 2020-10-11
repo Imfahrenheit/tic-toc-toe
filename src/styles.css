@@ -60,11 +60,17 @@ body {
 }
 
 table {
+  border-collapse: collapse;
+  border: 1px solid black;
   height: 50vh;
   width: 50vh;
 }
 
 td {
+  text-align: center;
+  vertical-align: middle;
   border: 1px black solid;
+  width: 60px;
+  height: 60px;
   background-color: rgba(0, 0, 0, 5%);
 }
