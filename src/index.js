@@ -52,12 +52,12 @@ let state = {
     o: []
   },
   color: {
-    x: "red",
-    o: "yellow"
+    x: "rgb(124, 252, 0)",
+    o: "rgb(250, 128, 114)"
   },
   playerName: {
-    x: colorDiv("red"), // colorDiv(this.color.x),
-    o: colorDiv("yellow") // colorDiv(this.color.o),
+    x: colorDiv("rgb(124, 252, 0)"), // colorDiv(this.color.x),
+    o: colorDiv("rgb(250, 128, 114)") // colorDiv(this.color.o),
   },
   point: {
     x: 0,
@@ -66,6 +66,38 @@ let state = {
   boardSize: 5,
   toWin: 5
 };
+
+let timer, timeLeft;
+let label = document.getElementById("timer");
+let progressBar = document.getElementById("progress-bar");
+
+function countdown() {
+  if (timeLeft) {
+    timeLeft--;
+    timer = setTimeout(countdown, 1000);
+
+    progressBar.style.background = "green";
+
+    progressBar.style.width = `${timeLeft * 10}%`;
+    label.innerHTML = `Time left for ${state.currentPlayer}: ${timeLeft}`;
+  } else {
+    label.innerHTML = "Fail";
+    switchPlayer(state.currentPlayer);
+    timer = undefined;
+    takeMove();
+  }
+}
+function takeMove() {
+  // timer will only be undefined if the game is not started
+  if (typeof timer === "undefined") {
+    timeLeft = 10;
+    countdown();
+  } else {
+    clearTimeout(timer);
+    timeLeft = 10;
+    countdown();
+  }
+}
 
 function reverseCoordinate(token) {
   if (token === "x") {
@@ -279,11 +311,12 @@ function addTokenToState(tileObj) {
 
 function insertToken(event) {
   clearWarning();
+  takeMove();
   const tile = event.target;
 
   if (tileEmpty(tile)) {
     tile.style.backgroundColor = state.color[state.currentPlayer];
-    //tile.innerHTML = `<span> ${state.currentPlayer} </span>`;
+    tile.innerHTML = `<span> ${state.currentPlayer} </span>`;
 
     // Parsing tile from HTML id to JavaScript object
     const tileObj = tileJSPosition(tile.id);

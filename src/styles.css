@@ -38,11 +38,11 @@ body {
 }
 
 #player-x-avatar {
-  background-color: red;
+  background-color: rgb(124, 252, 0);
 }
 
 #player-o-avatar {
-  background-color: yellow;
+  background-color: rgb(250, 128, 114);
 }
 
 .column {
@@ -69,8 +69,18 @@ table {
 td {
   text-align: center;
   vertical-align: middle;
+  font-family: Helvetica;
+  font-size: 30px;
   border: 1px black solid;
   width: 60px;
   height: 60px;
   background-color: rgba(0, 0, 0, 5%);
+}
+#bar-container {
+  width: 50vh;
+}
+#progress-bar {
+  background: green;
+  height: 24px;
+  width: 0px;
 }
